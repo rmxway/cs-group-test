@@ -14,6 +14,7 @@ export const base = css`
 		overflow-y: scroll;
 		background-color: ${(props) => props.theme.colors.gray.$1};
 		font-size: 1rem;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 		display: flex;
 		flex-direction: column;
 		line-height: 1.25;

@@ -1,7 +1,8 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import tasksReducer from '@/store/reducers/tasks';
 
 const appReducer = combineReducers({
-	tasks: {},
+	tasks: tasksReducer,
 });
 
 export const store = configureStore({
@@ -9,11 +10,5 @@ export const store = configureStore({
 });
 
 export const makeStore = () => {
-	const isServer = typeof window === 'undefined';
-
-	if (isServer) {
-		return store;
-	}
-
 	return store;
 };

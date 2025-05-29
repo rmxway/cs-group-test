@@ -3,10 +3,10 @@ import { DefaultTheme } from 'styled-components';
 
 import { Colors } from '@/@types/styled';
 
-const primary = '#fdd01a';
-const success = '#00ff9d';
-const danger = '#e54f5e';
-const label = '#5c323e';
+const primary = '#4f3727';
+const success = '#18dc60';
+const danger = '#f3394c';
+const label = '#3d325d';
 
 const colors: Colors = {
 	primary,
@@ -35,10 +35,10 @@ export const defaultTheme: DefaultTheme = {
 	colors,
 	layout: {
 		containerWidth: '1024px',
-		shadow: '0 5px 20px rgba(0, 0, 0, 0.2)',
+		shadow: '0 2px 8px rgba(0, 0, 0, 0.07)',
 	},
 	radius: {
-		borderRadius: '8px',
+		borderRadius: '12px',
 	},
 };
 
