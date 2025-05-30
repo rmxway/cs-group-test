@@ -13,7 +13,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps & InputHTMLAttribut
 	({ name, label, className, ...props }, ref) => (
 		<InputWrapper {...{ className }}>
 			{label && <Label {...{ label, name }} />}
-			<input {...props} {...{ ref, name }} id={name} />
+			<input {...props} {...{ ref, name }} id={name} autoComplete="off" />
 		</InputWrapper>
 	),
 );

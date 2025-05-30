@@ -1,7 +1,7 @@
 import { AnimatePresence } from 'framer-motion';
 import { useAppSelector } from '@/store/hooks';
 import { tasksStore } from '@/store/types';
-import { Filter, Task } from '@/components';
+import { Filter, Sort, Task } from '@/components';
 import { Grid } from '@/components/Layout';
 import { fadeVariant, HeaderList, TasksListWrapper } from './styled';
 
@@ -9,11 +9,10 @@ export const TasksList = () => {
 	const { currentTasks } = useAppSelector(tasksStore);
 	return (
 		<TasksListWrapper>
-			<Grid className="grid-filter" $templateColumns="1fr 220px" $direction="column">
+			<Grid className="grid-filter" $templateColumns="1fr 200px 220px" $direction="column" $align="center">
 				<h2>Список задач</h2>
-				<div>
-					<Filter />
-				</div>
+				<Sort />
+				<Filter />
 			</Grid>
 			{currentTasks.length > 0 ? (
 				<>
@@ -22,10 +21,10 @@ export const TasksList = () => {
 						<div>Описание</div>
 						<div>Приоритет</div>
 					</HeaderList>
-					<AnimatePresence mode="popLayout" >
+					<AnimatePresence mode="popLayout">
 						{currentTasks.map((task, i) => (
 							<Task
-                                layout
+								layout
 								key={task.id}
 								{...task}
 								variants={fadeVariant(i)}

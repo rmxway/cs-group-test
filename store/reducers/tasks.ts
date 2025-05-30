@@ -10,13 +10,11 @@ export interface Task {
 	priority: OptionValue;
 }
 
-type Sort = 'asc' | 'desc';
-
 interface InitialState {
 	tasks: Task[];
 	currentTasks: Task[];
 	filter: OptionValue;
-	sort: Sort;
+	sort: boolean;
 	isOpenModal: boolean;
 	modalType: TypeTask;
 	editedTask: Task | null;
@@ -26,15 +24,15 @@ const initialState: InitialState = {
 	tasks: mockTasks,
 	currentTasks: mockTasks,
 	filter: '-',
-	sort: 'asc',
+	sort: false,
 	isOpenModal: false,
 	modalType: 'create',
 	editedTask: null,
 };
 
-const tasksSlice = createSlice({
+const tasksReducer = createSlice({
 	initialState,
-	name: 'tasks',
+	name: 'tasksReducer',
 	reducers: {
 		addTask: (state, { payload }: PayloadAction<Task>) => {
 			state.tasks.push(payload);
@@ -44,12 +42,28 @@ const tasksSlice = createSlice({
 		},
 		editTask: (state, { payload }: PayloadAction<Task>) => {
 			const index = state.tasks.findIndex((task) => task.id === payload.id);
-            console.log(payload);
+			console.log(payload);
 
 			state.tasks[index] = payload;
 		},
 		changeFilter: (state, { payload }: PayloadAction<OptionValue>) => {
 			state.filter = payload;
+		},
+		changeSort: (state, { payload }: PayloadAction<boolean>) => {
+			state.sort = payload;
+		},
+		sort: (state) => {
+			const compare = (a: Task, b: Task) => {
+				if (a.id < b.id) {
+					return state.sort ? 1 : -1;
+				}
+				if (a.id > b.id) {
+					return state.sort ? -1 : 1;
+				}
+				return 0;
+			};
+
+			state.tasks = state.tasks.sort(compare);
 		},
 		filter: (state) => {
 			if (state.filter === '-') {
@@ -74,9 +88,19 @@ const tasksSlice = createSlice({
 	},
 });
 
-const { actions, reducer } = tasksSlice;
+const { actions, reducer } = tasksReducer;
 
-export const { addTask, editTask, removeTask, changeFilter, filter, showModal, changeModalType, getEditedTask } =
-	actions;
+export const {
+	addTask,
+	editTask,
+	removeTask,
+	changeFilter,
+	changeSort,
+	filter,
+	sort,
+	showModal,
+	changeModalType,
+	getEditedTask,
+} = actions;
 
 export default reducer;

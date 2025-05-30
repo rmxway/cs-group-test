@@ -18,7 +18,7 @@ const InputWrapper = styled.div`
 
 			&:active,
 			&:focus {
-				border-color: ${theme.colors.success};
+				border-color: ${theme.colors.primary};
 				outline: none;
 			}
 

@@ -3,7 +3,7 @@ import tasksReducer from '@/store/reducers/tasks';
 import { middlewares } from './thunks';
 
 const appReducer = combineReducers({
-	tasks: tasksReducer,
+	tasksReducer: tasksReducer,
 });
 
 export const store = configureStore({

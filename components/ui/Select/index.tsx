@@ -18,10 +18,10 @@ interface SelectProps {
 export const Select = forwardRef<HTMLSelectElement, SelectProps & HTMLAttributes<HTMLSelectElement>>(
 	({ label, name, options, value, ...props }, ref) => {
 		return (
-			<>
+			<div>
 				{label && <Label {...{ label, name }} />}
 				<SelectWrapper>
-					<select {...props} ref={ref} value={value}>
+					<select {...props} ref={ref} value={value} id={name}>
 						{options.map((opt) => (
 							<option key={opt.text} value={opt.value}>
 								{opt.text}
@@ -29,7 +29,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps & HTMLAttributes
 						))}
 					</select>
 				</SelectWrapper>
-			</>
+			</div>
 		);
 	},
 );
