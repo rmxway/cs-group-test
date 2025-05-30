@@ -1,7 +1,5 @@
 import { css } from 'styled-components';
 
-import { media } from '@/theme/media';
-
 export const base = css`
 	*,
 	*::after,
@@ -10,6 +8,7 @@ export const base = css`
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
 	}
+
 	body {
 		overflow-y: scroll;
 		background-color: ${(props) => props.theme.colors.gray.$1};
@@ -22,11 +21,8 @@ export const base = css`
 		line-height: 1.25;
 		min-width: 360px;
 		min-height: 100vh;
-
-		${media.lessThan('mdD')`
-            padding-top: 70px;
-        `}
 	}
+
 	code {
 		font-family: 'source-code-pro', 'Menlo', 'Monaco', 'Consolas', 'Courier New', monospace;
 	}
