@@ -14,7 +14,7 @@ export const base = css`
 		overflow-y: scroll;
 		background-color: ${(props) => props.theme.colors.gray.$1};
 		font-size: 1rem;
-		font-family: 'M PLUS Rounded 1c', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, ;
+		font-family: 'M PLUS Rounded 1c', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 		font-weight: 400;
 		font-style: normal;
 		display: flex;
