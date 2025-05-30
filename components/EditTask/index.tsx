@@ -1,4 +1,4 @@
-import { FC, useRef, useState } from 'react';
+import { FC, KeyboardEvent, useRef, useState } from 'react';
 import { Button, Input, OptionValue, Select } from '@/components/ui';
 import { Grid } from '@/components/Layout';
 import { priorities } from '@/helpers';
@@ -31,9 +31,16 @@ export const EditTask: FC<EditTaskProps> = ({ onSave, type }) => {
 		onSave();
 	};
 
+	const onEnter = (e: KeyboardEvent<HTMLInputElement>) => {
+		console.log(e.key);
+		if (e.key === 'Enter' && task.length > 2) {
+			saveTaskToStore();
+		}
+	};
+
 	return (
 		<>
-			<Grid $templateColumns="350px">
+			<Grid $templateColumns="350px" onKeyDown={onEnter}>
 				<div>
 					<Input
 						name="name"

@@ -9,10 +9,12 @@ export const TasksList = () => {
 	const { currentTasks } = useAppSelector(tasksStore);
 	return (
 		<TasksListWrapper>
-			<Grid className="grid-filter" $templateColumns="1fr 200px 220px" $direction="column" $align="center">
+			<Grid className="grid-filter">
 				<h2>Список задач</h2>
-				<Sort />
-				<Filter />
+				<Grid className="grid-tools">
+					<Sort />
+					<Filter />
+				</Grid>
 			</Grid>
 			{currentTasks.length > 0 ? (
 				<>

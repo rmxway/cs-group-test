@@ -1,11 +1,32 @@
 import styled from 'styled-components';
 import { Grid } from '@/components/Layout';
 import { Variants } from 'framer-motion';
+import media from 'styled-media-query';
 
 export const TasksListWrapper = styled.div`
-	${Grid}:not(.grid-filter) {
-		grid-template-columns: 1fr 1fr 100px 30px 30px;
+	${Grid}:not(.grid-filter):not(.grid-tools) {
+		grid-template-columns: 1fr;
 		align-items: center;
+
+		${media.greaterThan('medium')`
+            grid-template-columns: 1fr 1fr 80px 60px;
+        `}
+	}
+
+	.grid-tools {
+		grid-template-columns: 1fr 160px;
+		justify-content: space-between;
+		grid-auto-flow: column;
+		gap: 20px;
+	}
+
+	.grid-filter {
+		grid-template-columns: 1fr;
+		grid-auto-flow: row;
+
+		${media.greaterThan('medium')`
+            grid-template-columns: 1fr 450px;
+        `}
 	}
 `;
 export const HeaderList = styled(Grid)`
@@ -13,6 +34,11 @@ export const HeaderList = styled(Grid)`
 	background-color: ${({ theme }) => theme.colors.gray.$2};
 	border-radius: ${({ theme }) => theme.radius.borderRadius};
 	margin-bottom: 10px;
+	display: none;
+
+	${media.greaterThan('medium')`
+        display: grid;
+    `}
 `;
 
 export const fadeVariant = (i: number = 1): Variants => ({

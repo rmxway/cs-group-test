@@ -20,7 +20,7 @@ export const base = css`
 		display: flex;
 		flex-direction: column;
 		line-height: 1.25;
-		min-width: 320px;
+		min-width: 360px;
 		min-height: 100vh;
 
 		${media.lessThan('mdD')`
