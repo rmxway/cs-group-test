@@ -18,6 +18,10 @@ export const TasksListWrapper = styled.div`
 		justify-content: space-between;
 		grid-auto-flow: column;
 		gap: 20px;
+
+        ${media.greaterThan('medium')`
+            grid-template-columns: 1fr 185px;
+        `}
 	}
 
 	.grid-filter {
