@@ -1,4 +1,6 @@
+import { TypeTask } from '@/components';
 import { OptionValue } from '@/components/ui';
+import { mockTasks } from '@/helpers';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface Task {
@@ -8,12 +10,26 @@ export interface Task {
 	priority: OptionValue;
 }
 
+type Sort = 'asc' | 'desc';
+
 interface InitialState {
 	tasks: Task[];
+	currentTasks: Task[];
+	filter: OptionValue;
+	sort: Sort;
+	isOpenModal: boolean;
+	modalType: TypeTask;
+	editedTask: Task | null;
 }
 
 const initialState: InitialState = {
-	tasks: [],
+	tasks: mockTasks,
+	currentTasks: mockTasks,
+	filter: '-',
+	sort: 'asc',
+	isOpenModal: false,
+	modalType: 'create',
+	editedTask: null,
 };
 
 const tasksSlice = createSlice({
@@ -28,15 +44,39 @@ const tasksSlice = createSlice({
 		},
 		editTask: (state, { payload }: PayloadAction<Task>) => {
 			const index = state.tasks.findIndex((task) => task.id === payload.id);
+            console.log(payload);
+
 			state.tasks[index] = payload;
 		},
-		sortTasks: () => {},
-		filterTasks: () => {},
+		changeFilter: (state, { payload }: PayloadAction<OptionValue>) => {
+			state.filter = payload;
+		},
+		filter: (state) => {
+			if (state.filter === '-') {
+				state.currentTasks = state.tasks;
+			} else {
+				state.currentTasks = state.tasks.filter((task) => task.priority === state.filter);
+			}
+		},
+		showModal: (state, { payload }: PayloadAction<boolean>) => {
+			state.isOpenModal = payload;
+		},
+		changeModalType: (state, { payload }: PayloadAction<TypeTask>) => {
+			state.modalType = payload;
+		},
+		getEditedTask: (state, { payload }: PayloadAction<number | null>) => {
+			if (payload === null) {
+				state.editedTask = null;
+			} else {
+				state.editedTask = state.tasks.find((task) => task.id === payload)!;
+			}
+		},
 	},
 });
 
 const { actions, reducer } = tasksSlice;
 
-export const { addTask, editTask, filterTasks, removeTask, sortTasks } = actions;
+export const { addTask, editTask, removeTask, changeFilter, filter, showModal, changeModalType, getEditedTask } =
+	actions;
 
 export default reducer;

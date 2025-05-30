@@ -43,9 +43,9 @@ export const ButtonStyle = styled.button<Props>`
 		appearance: none;
 		border: 1px solid #aaa;
 		background: none;
-        height: 50px;
+        height: 40px;
 		border-radius: ${theme.radius.borderRadius};
-		padding: 15px 20px 15px;
+		padding: 10px 20px 10px;
 		color: ${theme.colors.gray.$1};
 		font-size: 12px;
 		font-weight: 800;

@@ -1,6 +1,10 @@
 import { Option } from '@/components/ui';
 
 export const priorities: Option[] = [
+    {
+		value: '-',
+		text: 'Выберите вариант',
+	},
 	{
 		value: 'high',
 		text: 'Высокий',

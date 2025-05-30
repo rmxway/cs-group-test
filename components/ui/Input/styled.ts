@@ -7,8 +7,8 @@ const InputWrapper = styled.div`
 		background-color: none;
 
 		input[type='text'] {
-			padding: 15px 20px 15px;
-            height: 50px;
+			padding: 10px 20px;
+            height: 40px;
 			border-radius: ${theme.radius.borderRadius};
 			width: 100%;
 			transition: 0.2s all;

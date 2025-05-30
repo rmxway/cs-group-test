@@ -5,7 +5,7 @@ export const LabelStyled = styled.label`
 		display: block;
 		margin-bottom: 8px;
 		color: ${theme.colors.dark};
-		text-transform: uppercase;
 		font-size: 12px;
+        font-weight: 600;
 	`}
 `;

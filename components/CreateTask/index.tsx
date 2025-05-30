@@ -1,56 +1,22 @@
-import { FC, useRef, useState } from 'react';
-import { Button, Input, OptionValue, Select } from '@/components/ui';
-import { Grid } from '@/components/Layout';
-import { priorities } from '@/helpers/constants';
+import { FC } from 'react';
+import { Button } from '@/components/ui';
 import { useAppDispatch } from '@/store/hooks';
-import { addTask, Task } from '@/store/reducers/tasks';
+import { changeModalType, getEditedTask, showModal } from '@/store/reducers/tasks';
 
 export const CreateTask: FC = () => {
-	const [task, setTask] = useState('');
-	const [description, setDescription] = useState('');
-	const [priority, setPriority] = useState<OptionValue>('high');
 	const dispatch = useAppDispatch();
-	const selectRef = useRef<HTMLSelectElement>(null);
 
-	const addTaskToStore = () => {
-		const newTask: Task = { task, description, id: Date.now(), priority };
-		dispatch(addTask(newTask));
-		setTask('');
-		setDescription('');
-		setPriority('high');
+	const handleCreateTask = () => {
+		dispatch(showModal(true));
+		dispatch(changeModalType('create'));
+		dispatch(getEditedTask(null));
 	};
 
 	return (
 		<>
-			<Grid $templateColumns="350px">
-				<div>
-					<Input
-						name="name"
-						type="text"
-						value={task}
-						label="Название"
-						onChange={(e) => setTask(e.currentTarget.value)}
-					/>
-					<Input
-						name="description"
-						type="text"
-						value={description}
-						label="Описание"
-						onChange={(e) => setDescription(e.currentTarget.value)}
-					/>
-				</div>
-				<Select
-					ref={selectRef}
-					label="Выберите приоритет"
-					name="select-priority"
-                    value={priority}
-					options={priorities}
-					onChange={(e) => setPriority(e.currentTarget.value as OptionValue)}
-				/>
-				<Button $primary onClick={addTaskToStore} disabled={task.length < 3}>
-					Добавить задачу
-				</Button>
-			</Grid>
+			<Button $primary onClick={handleCreateTask}>
+				Создать задачу
+			</Button>
 		</>
 	);
 };

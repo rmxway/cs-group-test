@@ -2,7 +2,7 @@ import { forwardRef, HTMLAttributes } from 'react';
 import Label from '@/components/ui/Label';
 import { SelectWrapper } from './styled';
 
-export type OptionValue = 'high' | 'middle' | 'low';
+export type OptionValue = 'high' | 'middle' | 'low' | '-';
 export interface Option {
 	value: OptionValue;
 	text: string;
@@ -11,7 +11,7 @@ export interface Option {
 interface SelectProps {
 	label?: string;
 	name: string;
-	value: OptionValue;
+	value?: OptionValue;
 	options: Option[];
 }
 
@@ -23,7 +23,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps & HTMLAttributes
 				<SelectWrapper>
 					<select {...props} ref={ref} value={value}>
 						{options.map((opt) => (
-							<option key={opt.value} value={opt.value}>
+							<option key={opt.text} value={opt.value}>
 								{opt.text}
 							</option>
 						))}

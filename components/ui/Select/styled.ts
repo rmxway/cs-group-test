@@ -6,8 +6,8 @@ export const SelectWrapper = styled.div`
 		select {
 			width: 100%;
 			margin-bottom: 10px;
-			height: 50px;
-			padding: 15px 20px;
+			height: 40px;
+			padding: 10px 20px;
 			outline: none;
 			border-radius: ${theme.radius.borderRadius};
 			appearance: none;
@@ -19,7 +19,7 @@ export const SelectWrapper = styled.div`
 			display: block;
 			right: 20px;
 			font-size: 14px;
-			top: 45%;
+			top: 40%;
 			transform: translate(0, -50%);
 			z-index: 2;
 		}
