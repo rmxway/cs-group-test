@@ -18,3 +18,5 @@ export const priorities: Option[] = [
 		text: 'Низкий',
 	},
 ];
+
+export const hostPath = '/cs-group-test';
