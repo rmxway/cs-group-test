@@ -1,5 +1,5 @@
 import { Action, Middleware } from 'redux';
-import { addTask, changeFilter, changeSort, editTask, filter, removeTask, sort } from './reducers/tasks';
+import { addTask, changeFilter, changeSort, editTask, removeTask, sort } from './reducers/tasks';
 import { RootStore } from './types';
 
 const filterAndSortTasks: Middleware = (state) => (next) => (action) => {
@@ -15,7 +15,6 @@ const filterAndSortTasks: Middleware = (state) => (next) => (action) => {
 		(action as Action).type == changeSort.type
 	) {
 		rootState.dispatch({ type: sort.type });
-		rootState.dispatch({ type: filter.type });
 	}
 };
 
