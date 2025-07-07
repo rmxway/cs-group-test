@@ -3,11 +3,11 @@ import { useAppSelector } from '@/store/hooks';
 import { Filter, Sort, Task } from '@/components';
 import { Grid } from '@/components/Layout';
 import { fadeVariant, HeaderList, TasksListWrapper } from './styled';
-import { currentTasksMemoized } from '@/store/selector';
+import { currentTasksSelector } from '@/store/selectors';
+import { tasksStore } from '@/store/types';
 
 export const TasksList = () => {
-	const currentTasks = useAppSelector(currentTasksMemoized);
-
+	const currentTasks = currentTasksSelector(useAppSelector(tasksStore));
 	return (
 		<TasksListWrapper>
 			<Grid className="grid-filter">
@@ -33,7 +33,7 @@ export const TasksList = () => {
 								variants={fadeVariant(i)}
 								initial="hidden"
 								animate="visible"
-								exit={{ opacity: 0, scale: 1 }}
+								exit={{ opacity: 0, scale: 0.9 }}
 							/>
 						))}
 					</AnimatePresence>

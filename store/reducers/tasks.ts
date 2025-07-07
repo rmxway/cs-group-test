@@ -10,7 +10,7 @@ export interface Task {
 	priority: OptionValue;
 }
 
-interface InitialState {
+export interface TasksState {
 	tasks: Task[];
 	filter: OptionValue;
 	sort: boolean;
@@ -19,7 +19,7 @@ interface InitialState {
 	editedTask: Task | null;
 }
 
-const initialState: InitialState = {
+const initialState: TasksState = {
 	tasks: mockTasks,
 	filter: '-',
 	sort: false,

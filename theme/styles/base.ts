@@ -21,6 +21,7 @@ export const base = css`
 		line-height: 1.25;
 		min-width: 360px;
 		min-height: 100vh;
+        padding-bottom: 40px;
 	}
 
 	code {
