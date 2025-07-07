@@ -1,12 +1,13 @@
 import { AnimatePresence } from 'framer-motion';
 import { useAppSelector } from '@/store/hooks';
-import { tasksStore } from '@/store/types';
 import { Filter, Sort, Task } from '@/components';
 import { Grid } from '@/components/Layout';
 import { fadeVariant, HeaderList, TasksListWrapper } from './styled';
+import { currentTasksMemoized } from '@/store/selector';
 
 export const TasksList = () => {
-	const { currentTasks } = useAppSelector(tasksStore);
+	const currentTasks = useAppSelector(currentTasksMemoized);
+
 	return (
 		<TasksListWrapper>
 			<Grid className="grid-filter">

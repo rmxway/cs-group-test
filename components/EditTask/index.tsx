@@ -1,4 +1,4 @@
-import { FC, KeyboardEvent, useRef, useState } from 'react';
+import { FC, KeyboardEvent, memo, useRef, useState } from 'react';
 import { Button, Input, OptionValue, Select } from '@/components/ui';
 import { Grid } from '@/components/Layout';
 import { priorities } from '@/helpers';
@@ -12,7 +12,7 @@ interface EditTaskProps {
 	onSave: () => void;
 }
 
-export const EditTask: FC<EditTaskProps> = ({ onSave, type }) => {
+export const EditTask: FC<EditTaskProps> = memo(({ onSave, type }) => {
 	const { editedTask } = useAppSelector(tasksStore);
 
 	const [task, setTask] = useState(editedTask?.task || '');
@@ -71,6 +71,6 @@ export const EditTask: FC<EditTaskProps> = ({ onSave, type }) => {
 			</Grid>
 		</>
 	);
-};
+});
 
 export default EditTask;

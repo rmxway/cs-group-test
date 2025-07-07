@@ -12,7 +12,6 @@ export interface Task {
 
 interface InitialState {
 	tasks: Task[];
-	currentTasks: Task[];
 	filter: OptionValue;
 	sort: boolean;
 	isOpenModal: boolean;
@@ -22,7 +21,6 @@ interface InitialState {
 
 const initialState: InitialState = {
 	tasks: mockTasks,
-	currentTasks: mockTasks,
 	filter: '-',
 	sort: false,
 	isOpenModal: false,
@@ -65,13 +63,6 @@ const tasksReducer = createSlice({
 
 			state.tasks = state.tasks.sort(compare);
 		},
-		filter: (state) => {
-			if (state.filter === '-') {
-				state.currentTasks = state.tasks;
-			} else {
-				state.currentTasks = state.tasks.filter((task) => task.priority === state.filter);
-			}
-		},
 		showModal: (state, { payload }: PayloadAction<boolean>) => {
 			state.isOpenModal = payload;
 		},
@@ -96,7 +87,6 @@ export const {
 	removeTask,
 	changeFilter,
 	changeSort,
-	filter,
 	sort,
 	showModal,
 	changeModalType,
