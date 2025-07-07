@@ -1,5 +1,3 @@
-'use client';
-
 import { AnimatePresence } from 'framer-motion';
 import { FC, UIEvent, useRef } from 'react';
 
@@ -23,7 +21,7 @@ export const Modal: FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
 	};
 
 	return (
-		<AnimatePresence mode="sync" presenceAffectsLayout>
+		<AnimatePresence>
 			{isOpen && (
 				<ModalWrapper
 					variants={wrapperVariants}
@@ -33,7 +31,7 @@ export const Modal: FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
 					transition={{
 						duration: 0.15,
 					}}
-					onClick={handleClose}
+					onMouseDown={handleClose}
 					ref={wrapperRef}
 				>
 					<ModalWindow variants={windowVariants}>

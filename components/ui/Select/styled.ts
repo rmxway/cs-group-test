@@ -3,7 +3,8 @@ import styled, { css } from 'styled-components';
 export const SelectWrapper = styled.div`
 	${({ theme }) => css`
 		position: relative;
-		select {
+
+        select {
 			width: 100%;
 			margin-bottom: 10px;
 			height: 40px;
@@ -11,6 +12,7 @@ export const SelectWrapper = styled.div`
 			outline: none;
 			border-radius: ${theme.radius.borderRadius};
 			appearance: none;
+            cursor: pointer;
 		}
 
 		&:after {
@@ -22,6 +24,7 @@ export const SelectWrapper = styled.div`
 			top: 40%;
 			transform: translate(0, -50%);
 			z-index: 2;
+            pointer-events: none;
 		}
 	`}
 `;
